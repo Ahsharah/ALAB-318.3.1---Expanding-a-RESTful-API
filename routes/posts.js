@@ -48,3 +48,31 @@ router.get("/:id", (req, res, next) => {
   if (post) res.json({ post, links });
   else next();
 });
+// When someone wants to UPDATE a post
+router.patch("/:id", (req, res, next) => {
+  const post = posts.find((p, i) => {
+    if (p.id == req.params.id) {
+      // Update any info they send
+      for (const key in req.body) {
+        posts[i][key] = req.body[key];
+      }
+      return true;
+    }
+  });
+  if (post) res.json(post);
+  else next();
+});
+// When someone wants to DELETE a post
+router.delete("/:id", (req, res, next) => {
+  const post = posts.find((p, i) => {
+    if (p.id == req.params.id) {
+      posts.splice(i, 1);  
+      // Remove it from the list
+      return true;
+    }
+  });
+  if (post) res.json(post);
+  else next();
+});
+
+module.exports = router;
