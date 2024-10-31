@@ -32,3 +32,21 @@ router.get("/", (req, res) => {
   ];
   res.json({ comments: commentList, links });
 });
+// When someone wants to make a NEW comment
+router.post("/", (req, res, next) => {
+    // Check if they sent everything needed
+    if (req.body.userId && req.body.postId && req.body.body) {
+      const comment = {
+        id: comments[comments.length - 1].id + 1,  
+        // Give it the next ID number
+        userId: req.body.userId,
+        postId: req.body.postId,
+        body: req.body.body
+      };
+      
+      comments.push(comment);
+      res.json(comment);
+    } else {
+      next(error(400, "Please provide userId, postId, and body"));
+    }
+  });
