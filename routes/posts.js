@@ -30,3 +30,21 @@ router.post("/", (req, res, next) => {
     res.json(posts[posts.length - 1]);
   } else next(error(400, "Insufficient Data"));
 });
+// When someone wants to see a SPECIFIC post
+router.get("/:id", (req, res, next) => {
+  const post = posts.find((p) => p.id == req.params.id);
+  const links = [
+    {
+      href: `/${req.params.id}`,
+      rel: "",
+      type: "PATCH",
+    },
+    {
+      href: `/${req.params.id}`,
+      rel: "",
+      type: "DELETE",
+    },
+  ];
+  if (post) res.json({ post, links });
+  else next();
+});
