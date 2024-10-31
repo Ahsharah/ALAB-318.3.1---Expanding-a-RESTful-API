@@ -1,24 +1,7 @@
-// Keeps all the posts users made
-// Each post has an id and shows which user wrote it (userId)
-const posts = [
-  {
-    id: 1,
-    userId: 1, 
-    title: "est et quae odit qui non",
-    content: "similique esse doloribus nihil accusamus\nomnis dolorem fuga consequuntur reprehenderit fugit recusandae temporibus\nperspiciatis cum ut laudantium\nomnis aut molestiae vel vero",
-  },
-  {
-    id: 2,
-    userId: 1,  
-    title: "quasi id et eos tenetur aut quo autem",
-    content: "eum sed dolores ipsam sint possimus debitis occaecati\ndebitis qui qui et\nut placeat enim earum aut odit facilis\nconsequatur suscipit necessitatibus rerum sed inventore temporibus consequatur",
-  },
-  {
-    id: 3,
-    userId: 2, 
-    title: "delectus ullam et corporis nulla voluptas sequi",
-    content: "non et quaerat ex quae ad maiores\nmaiores recusandae totam aut blanditiis mollitia quas illo\nut voluptatibus voluptatem\nsimilique nostrum eum",
-  }
-];
-// lets other files use (posts) data
-module.exports = posts;
+// File handles everything about posts
+
+const express = require("express");
+const router = express.Router();
+const posts = require("../data/posts");
+const error = require("../utilities/error");
+
