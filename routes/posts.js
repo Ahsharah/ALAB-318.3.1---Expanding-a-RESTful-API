@@ -20,3 +20,5 @@ const posts = [
     content: "non et quaerat ex quae ad maiores\nmaiores recusandae totam aut blanditiis mollitia quas illo\nut voluptatibus voluptatem\nsimilique nostrum eum",
   }
 ];
+// lets other files use (posts) data
+module.exports = posts;
